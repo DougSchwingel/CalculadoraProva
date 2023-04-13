@@ -54,7 +54,9 @@ mixin Calculo {
   static TextEditingController insereOperador(String buttonkey,
       TextEditingController painel, double valor, String operador) {
     List<String> operacoes = ['*', '+', '-', '%', '/'];
-    if (painel.text == '0' && operacoes.contains(TextFieldSingleton.operador)) {
+    if (painel.text == '0' &&
+        operacoes.contains(TextFieldSingleton.operador) &&
+        buttonkey != '%') {
       TextFieldSingleton.operador = buttonkey;
     } else if (buttonkey == 'C') {
       painel.text = '0';
@@ -76,6 +78,7 @@ mixin Calculo {
       }
     } else if (buttonkey == '%') {
       if (painel.text == '0') {
+        TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
         return painel;
       } else {
         double valor = (double.parse(painel.text)) / 100;
@@ -109,6 +112,16 @@ mixin Calculo {
       } else if (buttonkey == '=') {
         TextFieldSingleton.valor = double.parse(painel.text);
         painel.text = '0';
+      } else if (TextFieldSingleton.operador == '%') {
+        if (painel.text == '0') {
+          TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
+          return painel;
+        } else {
+          double valor = (double.parse(painel.text)) / 100;
+          painel.text = valor.toString();
+
+          return painel;
+        }
       } else {
         return painel;
       }
@@ -146,6 +159,16 @@ mixin Calculo {
           painel.text = TextFieldSingleton.valor.toString();
           TextFieldSingleton.historico.text = painel.text;
           painel.text = '0';
+        } else if (TextFieldSingleton.operador == '%') {
+          if (painel.text == '0') {
+            TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
+            return painel;
+          } else {
+            double valor = (double.parse(painel.text)) / 100;
+            painel.text = valor.toString();
+
+            return painel;
+          }
         } else {
           painel.text = '0';
           return painel;
@@ -183,6 +206,16 @@ mixin Calculo {
           painel.text = TextFieldSingleton.valor.toString();
           TextFieldSingleton.historico.text = painel.text;
           painel.text = '0';
+        } else if (TextFieldSingleton.operador == '%') {
+          if (painel.text == '0') {
+            TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
+            return painel;
+          } else {
+            double valor = (double.parse(painel.text)) / 100;
+            painel.text = valor.toString();
+
+            return painel;
+          }
         } else {
           painel.text = '0';
           return painel;
@@ -220,6 +253,16 @@ mixin Calculo {
           painel.text = TextFieldSingleton.valor.toString();
           TextFieldSingleton.historico.text = painel.text;
           painel.text = '0';
+        } else if (TextFieldSingleton.operador == '%') {
+          if (painel.text == '0') {
+            TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
+            return painel;
+          } else {
+            double valor = (double.parse(painel.text)) / 100;
+            painel.text = valor.toString();
+
+            return painel;
+          }
         } else {
           painel.text = '0';
           return painel;
@@ -257,6 +300,16 @@ mixin Calculo {
           painel.text = TextFieldSingleton.valor.toString();
           TextFieldSingleton.historico.text = painel.text;
           painel.text = '0';
+        } else if (TextFieldSingleton.operador == '%') {
+          if (painel.text == '0') {
+            TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
+            return painel;
+          } else {
+            double valor = (double.parse(painel.text)) / 100;
+            painel.text = valor.toString();
+
+            return painel;
+          }
         } else {
           painel.text = '0';
           return painel;
@@ -282,6 +335,16 @@ mixin Calculo {
           TextFieldSingleton.valor =
               TextFieldSingleton.valor + double.parse(painel.text);
           painel.text = '0';
+        } else if (TextFieldSingleton.operador == '%') {
+          if (painel.text == '0') {
+            TextFieldSingleton.valor = TextFieldSingleton.valor / 100;
+            return painel;
+          } else {
+            double valor = (double.parse(painel.text)) / 100;
+            painel.text = valor.toString();
+
+            return painel;
+          }
         } else {
           painel.text = '0';
           return painel;
